@@ -52,10 +52,31 @@ public class day1 {
         }
 
         for (value=0; value <10; value++){
-            System.out.printf("for value : %d", value);
+            System.out.printf("for value : %d\n", value);
         }
     }
 
+    public static void conditionals() {
+
+        int val = 7;
+
+        if (val < 4) {
+            System.out.println("Val is less than 4");
+        }
+        else if (val == 5) {
+            System.out.println("Val is 5");
+        }
+        else {
+            System.out.println("Val greater than 5");
+        }
+
+        while (true) {
+            System.out.println("inside while loop");
+            if (val > 5) {
+                break;
+            }
+        }
+    }
 
     public static  void main(String[] args) {
         System.out.println(("Hello World"));
@@ -63,5 +84,6 @@ public class day1 {
         primitiveTypes();
         nonPrimitive();
         loop();
+        conditionals();
     }
 }
