@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class day1 {
 
@@ -78,6 +79,30 @@ public class day1 {
         }
     }
 
+
+    public static void userInput(){
+
+        Scanner input = new Scanner(System.in);
+
+
+        System.out.println("Enter a line");
+
+        //wait for user to enter a line
+        String line = input.nextLine();
+        System.out.println("U entered: " + line);
+
+        //use scanner to get other primitives too
+        System.out.println("Enter an integer");
+        int val = input.nextInt();
+        System.out.println("Integer is " + val);
+
+
+        //use scanner to get other primitives too
+        System.out.println("Enter an floating point val");
+        double d = input.nextDouble();
+        System.out.println("Double is " + d);
+
+    }
     public static  void main(String[] args) {
         System.out.println(("Hello World"));
 
@@ -85,5 +110,6 @@ public class day1 {
         nonPrimitive();
         loop();
         conditionals();
+        userInput();
     }
 }
