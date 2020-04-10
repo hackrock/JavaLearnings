@@ -42,10 +42,26 @@ public class day1 {
 
     }
 
+    public static void loop() {
+
+        int value = 0;
+
+        while (value < 10) {
+            System.out.println("value :" + value);
+            value += 1;
+        }
+
+        for (value=0; value <10; value++){
+            System.out.printf("for value : %d", value);
+        }
+    }
+
+
     public static  void main(String[] args) {
         System.out.println(("Hello World"));
 
         primitiveTypes();
         nonPrimitive();
+        loop();
     }
 }
