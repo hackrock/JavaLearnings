@@ -103,6 +103,45 @@ public class day1 {
         System.out.println("Double is " + d);
 
     }
+
+
+    public static void doWhile() {
+
+        Scanner input = new Scanner(System.in);
+        int value = 0;
+
+        do {
+            System.out.println("Enter an interger");
+            value = input.nextInt();
+        }
+        while (value != 5);
+
+        System.out.println("Entered 5");
+    }
+
+    public static void switchStatement() {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Enter a command");
+        String text  = input.nextLine();
+
+        switch (text) {
+
+            case "start":
+                System.out.println("Started prog");
+                break;
+
+            case "stop":
+                System.out.println("Stopped prog");
+                break;
+
+            default:
+                System.out.println("Command not found");
+
+        }
+
+    }
+
     public static  void main(String[] args) {
         System.out.println(("Hello World"));
 
@@ -110,6 +149,8 @@ public class day1 {
         nonPrimitive();
         loop();
         conditionals();
-        userInput();
+        //userInput();
+        //doWhile();
+        switchStatement();
     }
 }
