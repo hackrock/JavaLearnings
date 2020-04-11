@@ -68,6 +68,34 @@ class Machine {
     }
 }
 
+//Static variable belong to class and there is only one copy
+//final is Javas way of constant
+class StaticExample {
+
+    public StaticExample(String name) {
+        this.name = name;
+    }
+
+    public static void setDesc(String newDesc) {
+        desc = newDesc;
+    }
+
+    public final static int ConstValue = 334; //const var needs to be initialized
+
+    private String name;
+    private static String desc;
+
+    public static void  printInfo1() {
+//        System.out.println(name); //Cannot access non static variables
+        System.out.println(desc);
+    }
+
+    public void printInfo() {
+        System.out.printf("NAME is %s and desc is %s\n", name, desc);
+    }
+
+}
+
 public class classesAndObjects {
 
     public static void getAndSet() {
@@ -95,10 +123,29 @@ public class classesAndObjects {
 
     }
 
-    public static void main(String[] args){
+
+
+    public static void testConstructor() {
         Machine m = new Machine("nikko");
         System.out.println(m.getName());
         Machine m2 = new Machine(12);
         Machine m3 = new Machine("red", 33);
+    }
+    public static void main(String[] args){
+        StaticExample se = new StaticExample("ssss");
+        StaticExample se2 = new StaticExample("ffff");
+
+        StaticExample.setDesc("Blurrp");
+
+        se.printInfo();
+
+        StaticExample.setDesc("Pooo");
+
+        se.printInfo();
+        se2.printInfo();
+
+        System.out.println(se.ConstValue);
+        // se.ConstValue = 334; //cannot assign to const
+
     }
 }
