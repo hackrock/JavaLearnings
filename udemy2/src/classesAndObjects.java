@@ -41,9 +41,36 @@ class Robot {
 
 }
 
+
+
+class Machine {
+    // constructor does not have return
+    public Machine(String name) {
+        System.out.println("Constructor called");
+        this.name = name;
+    }
+
+    public Machine(int age) {
+        System.out.println("2ns Constructor called");
+    }
+
+    public Machine(String name, int age) {
+        this(name); //calling another constructor within constructor
+
+        System.out.println("3rd Constructor called");
+
+    }
+
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+}
+
 public class classesAndObjects {
 
-    public static void main(String[] args){
+    public static void getAndSet() {
         Person p1 = new Person();
         p1.name = "ajax";
         p1.age = 1;
@@ -66,5 +93,12 @@ public class classesAndObjects {
         System.out.println("Robit name is " + r.getName());
         r.move(123, "west");
 
+    }
+
+    public static void main(String[] args){
+        Machine m = new Machine("nikko");
+        System.out.println(m.getName());
+        Machine m2 = new Machine(12);
+        Machine m3 = new Machine("red", 33);
     }
 }
