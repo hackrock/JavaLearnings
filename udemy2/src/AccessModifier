@@ -1,0 +1,4 @@
+Public: Accessible from everywhere. Bad practice to have class variables defined as public
+Private: Accessible only from the class. Not accessible even from subclass
+Protected: Accessible from subclass and from the same package.
+No access mod: Accessible from same package but not accessible from subclass
