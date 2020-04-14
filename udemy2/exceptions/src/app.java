@@ -13,6 +13,8 @@ public class app {
             e.printStackTrace();
         }
 
+        testRuntime();
+
         System.out.println("Finished");
     }
 
@@ -40,5 +42,28 @@ public class app {
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
+
+    }
+
+    public static void testRuntime() {
+
+        int val = 7;
+        val = val/0; // This will cause / by Zero runtime exception. As you can see we dont have to add exception handlers for run time exceptions.
+        // THis is because RTE are real code issue in your programs and there may not be a way to recover from them
+
+        String text = null;
+        text.length(); //This will cause NullPointException. easy to fix once found.
+
+        // you can catch the RTE exceptions but you are not forced to by Java
+        try {
+            String[] texts = {"one"};
+            String x = texts[3]; //Index out of bound
+
+        } catch (RuntimeException e) {
+            System.out.println(e.toString());
+        }
+
+
+
     }
 }
