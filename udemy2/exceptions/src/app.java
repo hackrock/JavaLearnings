@@ -1,6 +1,8 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.text.ParseException;
 
 public class app {
     public static void main(String[] args) {
@@ -18,5 +20,25 @@ public class app {
         // This function can either handle the exception within the function or throw it
         File file = new File("test.txt");
         FileReader fr = new FileReader(file);
+    }
+
+    public static void testMultipleException() {
+        Test test = new Test();
+        /*
+        Exception catch chaining. Order of exception is important subclasses should come before its base classes
+        try {
+            test.run();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        */
+        // Java 7 multicatch
+        try {
+            test.run();
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
     }
 }
