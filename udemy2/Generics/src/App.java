@@ -7,6 +7,7 @@ The whole collection library was rewritten to use generics to avoid such type ca
  */
 public class App {
 
+
     public static void main(String[] args) {
         // Old way without generics
         ArrayList al = new ArrayList();
@@ -18,6 +19,9 @@ public class App {
         x = (String) al.get(0);
         x = (String) al.get(1);
         // x = (String) al.get(2); // ClassCastException: java.lang.Integer cannot be cast to java.lang.String
+        //for(String value: al) { //This wont work because there is no explicit casting of Object type in list to String.
+        //    System.out.println(value);
+        //}
 
         // New way of using collections using generics
 
@@ -25,6 +29,9 @@ public class App {
         alnew.add("AAAA");
         alnew.add("BBB");
         //alnew.add(12); //THis will throw compile time error because ArrayList here can only contain string objects.
+        for(String value: alnew) { // this will work because compiler compare the type of ArrayList to type of val
+            System.out.println(value);
+        }
 
         String y;
         y = alnew.get(0); // No type casting is required to extract list object. Compiler makes sure they are same.
