@@ -4,6 +4,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
 
+
+class Temp implements AutoCloseable {
+
+
+    @Override
+    public void close() throws Exception {
+        System.out.println("Closing");
+    }
+}
 public class app {
     public static void main(String[] args) {
         File file = new File("test.txt");
@@ -63,7 +72,26 @@ public class app {
             System.out.println(e.toString());
         }
 
-
-
     }
+
+    public static void testTryWithResources(){
+        //Try with resources
+        // this is a Java 7 feature.. reduces the try catch chaining
+
+        Temp temp = new Temp();
+
+        //normal old way of try catch
+        try {
+            temp.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try(Temp temp1 = new Temp()){ //this should be autocloseable object
+            // close is automatically called
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
