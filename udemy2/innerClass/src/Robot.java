@@ -49,4 +49,17 @@ public class Robot {
         this.battery = battery;
         System.out.println("Robot has a new battery");
     }
+
+    public void testInnerClass() {
+        // you can have a inner class declared within a method too.
+
+        class Temp {
+            public void doSomething() {
+                System.out.println("Method class");
+            }
+        }
+
+        Temp temp = new Temp();
+        temp.doSomething();
+    }
 }
