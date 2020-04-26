@@ -1,5 +1,6 @@
 package com.drawingapp.requests;
 
+import com.drawingapp.annotations.Square;
 import com.drawingapp.services.DrawShape;
 
 import javax.inject.Inject;
@@ -7,7 +8,7 @@ import javax.inject.Inject;
 public class SquareRequestSubclass extends SquareRequest {
 
     @Inject
-    public SquareRequestSubclass(DrawShape d) {
+    public SquareRequestSubclass(@Square DrawShape d) {
         super(d);
     }
 

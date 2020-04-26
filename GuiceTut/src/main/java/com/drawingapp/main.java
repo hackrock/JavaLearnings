@@ -1,6 +1,7 @@
 package com.drawingapp;
 
 import com.drawingapp.module.AppModule;
+import com.drawingapp.requests.CircleRequest;
 import com.drawingapp.requests.SquareRequest;
 import com.drawingapp.requests.SquareRequestFieldInjection;
 import com.drawingapp.requests.SquareRequestMethodInjection;
@@ -8,10 +9,12 @@ import com.drawingapp.services.DrawShape;
 import com.drawingapp.services.DrawSquare;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import javafx.scene.Camera;
 
 public class main {
 
     private static final String SQUARE_STRING = "SQUARE";
+    private static final String CIRCLE_STRING = "CIRCLE";
 
     private static void sendRequest(String requestType) {
 
@@ -49,13 +52,25 @@ public class main {
             SquareRequestMethodInjection request = injector.getInstance(SquareRequestMethodInjection.class);
             request.makeRequest();
         }
+        else if (requestType.equals(CIRCLE_STRING)) {
+            System.out.println("Got request for drawing circle!!");
+            Injector injector = Guice.createInjector(new AppModule());
+
+            CircleRequest request = injector.getInstance(CircleRequest.class);
+            // Now if you dont tell guice to use DrawCircle object when CircleRequest is instantiated, then guice will
+            // create DrawCircle for CircleRequest because that is what the binding rule.
+            request.makeRequest();
+
+        }
 
     }
 
     public static void main(String[] args) {
         System.out.println("App staring");
 //        sendRequest(SQUARE_STRING);
-        sendRequest_2(SQUARE_STRING);
-        sendRequest_3(SQUARE_STRING);
+//        sendRequest_2(SQUARE_STRING);
+//        sendRequest_3(SQUARE_STRING);
+        sendRequest_3(CIRCLE_STRING);
+
     }
 }
