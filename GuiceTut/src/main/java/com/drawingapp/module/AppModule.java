@@ -1,9 +1,7 @@
 package com.drawingapp.module;
 
-import com.drawingapp.annotations.ColorValue;
-import com.drawingapp.annotations.EdgeValue;
-import com.drawingapp.annotations.Square;
-import com.drawingapp.annotations.SquareColor;
+import com.drawingapp.annotations.*;
+import com.drawingapp.providers.ColorCircleProvider;
 import com.drawingapp.requests.CircleRequest;
 import com.drawingapp.requests.SquareRequest;
 import com.drawingapp.requests.SquareRequestSubclass;
@@ -47,6 +45,11 @@ public class AppModule extends AbstractModule {
         //lets annotate
         bind(String.class).annotatedWith(SquareColor.class).toInstance("JAMANTHY");
 
+
+        //IF the Provides method below gets more complicated , you can move it to a Provider class as shown below
+        bind(ColorShape.class).annotatedWith(Circle.class).toProvider(ColorCircleProvider.class).in(Scopes.SINGLETON);
+        bind(String.class).annotatedWith(CircleColor.class).toInstance("Marroon");
+
     }
 
     @Provides
@@ -56,4 +59,6 @@ public class AppModule extends AbstractModule {
         ColorSquare s = new ColorSquare(color);
         return s;
     }
+
+
 }

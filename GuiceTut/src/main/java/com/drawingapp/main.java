@@ -2,6 +2,7 @@ package com.drawingapp;
 
 import com.drawingapp.module.AppModule;
 import com.drawingapp.requests.*;
+import com.drawingapp.sample3partyLib.ColorCircle;
 import com.drawingapp.services.DrawShape;
 import com.drawingapp.services.DrawSquare;
 import com.google.inject.Guice;
@@ -13,6 +14,7 @@ public class main {
     private static final String SQUARE_STRING = "SQUARE";
     private static final String CIRCLE_STRING = "CIRCLE";
     private static final String COLOR_SQUARE = "COLOR_SQUARE";
+    private static final String COLOR_CIRCLE = "COLOR_CIRCLE";
 
     private static void sendRequest(String requestType) {
 
@@ -65,6 +67,12 @@ public class main {
             ColorSquareRequest request = injector.getInstance(ColorSquareRequest.class);
             request.color();
         }
+        else if (requestType.equals(COLOR_CIRCLE)){
+            System.out.println("Got request to color circle");
+            Injector injector = Guice.createInjector(new AppModule());
+            ColorCircleRequest request = injector.getInstance(ColorCircleRequest.class);
+            request.color();
+        }
 
     }
 
@@ -74,7 +82,7 @@ public class main {
 //        sendRequest_2(SQUARE_STRING);
 //        sendRequest_3(SQUARE_STRING);
 //        sendRequest_3(CIRCLE_STRING);
-        sendRequest_3(COLOR_SQUARE);
+        sendRequest_3(COLOR_CIRCLE);
 
     }
 }
