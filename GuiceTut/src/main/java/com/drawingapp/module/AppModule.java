@@ -3,14 +3,19 @@ package com.drawingapp.module;
 import com.drawingapp.annotations.ColorValue;
 import com.drawingapp.annotations.EdgeValue;
 import com.drawingapp.annotations.Square;
+import com.drawingapp.annotations.SquareColor;
 import com.drawingapp.requests.CircleRequest;
 import com.drawingapp.requests.SquareRequest;
 import com.drawingapp.requests.SquareRequestSubclass;
+import com.drawingapp.sample3partyLib.ColorShape;
+import com.drawingapp.sample3partyLib.ColorSquare;
 import com.drawingapp.services.DrawCircle;
 import com.drawingapp.services.DrawShape;
 import com.drawingapp.services.DrawSquare;
 import com.google.inject.AbstractModule;
+import com.google.inject.Provides;
 import com.google.inject.Scopes;
+import com.google.inject.Singleton;
 import com.google.inject.name.Names;
 
 public class AppModule extends AbstractModule {
@@ -38,5 +43,17 @@ public class AppModule extends AbstractModule {
 
         bind(SquareRequest.class).to(SquareRequestSubclass.class);
 
+//        bind(String.class).toInstance("RED"); //This is global so bad
+        //lets annotate
+        bind(String.class).annotatedWith(SquareColor.class).toInstance("JAMANTHY");
+
+    }
+
+    @Provides
+    @Singleton //make this singleton
+    @Square // which implemation to use is specified by this annotation.
+    ColorShape providesColorSquare(@SquareColor String color) {
+        ColorSquare s = new ColorSquare(color);
+        return s;
     }
 }
