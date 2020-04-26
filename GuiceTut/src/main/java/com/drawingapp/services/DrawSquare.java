@@ -11,7 +11,7 @@ public class DrawSquare implements DrawShape {
     private String color;
 
     @Inject
-    public DrawSquare(Integer edge, String color) {
+    public DrawSquare(@EdgeValue Integer edge, @ColorValue String color) { //Create annotations for variable that can be used for binding values to these variable by guice
         this.edge = edge;
         this.color = color;
     }
