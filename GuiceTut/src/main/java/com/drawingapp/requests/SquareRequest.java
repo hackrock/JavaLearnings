@@ -16,4 +16,9 @@ public class SquareRequest {
     public void makeRequest(){
         d.draw();
     }
+
+    public DrawShape getDrawShape() {
+        //return the drawshape object instance
+        return this.d;
+    }
 }

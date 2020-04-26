@@ -20,6 +20,13 @@ public class main {
 //            SquareRequest sr = new SquareRequest(d); //Again use Guice for creating Request object
             SquareRequest sr = injector.getInstance(SquareRequest.class); //you can see here that you dont have to pass the square object previously created. that is because guice figure that out from the inject annotation in the request constructor
             sr.makeRequest();
+            SquareRequest sr2 = injector.getInstance(SquareRequest.class); // create another request object
+
+            //Once you make the DrawSquare class a singleton, below statement will evaluate to true
+            // This is because we have a binding rule for DrawShape to give DrawSquare objects
+            // Lets also add a rule to make drawsquare a singleton without making any changes to drawsquare class
+            boolean isEqual = sr.getDrawShape() == sr2.getDrawShape();
+            System.out.println("The drawshape objects are equal: " + isEqual);
         }
     }
 
