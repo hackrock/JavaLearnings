@@ -2,6 +2,8 @@ package com.drawingapp;
 
 import com.drawingapp.module.AppModule;
 import com.drawingapp.requests.SquareRequest;
+import com.drawingapp.requests.SquareRequestFieldInjection;
+import com.drawingapp.requests.SquareRequestMethodInjection;
 import com.drawingapp.services.DrawShape;
 import com.drawingapp.services.DrawSquare;
 import com.google.inject.Guice;
@@ -30,8 +32,30 @@ public class main {
         }
     }
 
+    private static void sendRequest_2(String requestType) {
+        //field injection
+        if (requestType.equals(SQUARE_STRING)) {
+            Injector injector = Guice.createInjector(new AppModule());
+            SquareRequestFieldInjection request = injector.getInstance(SquareRequestFieldInjection.class);
+            request.makeRequest();
+        }
+
+    }
+
+    private static void sendRequest_3(String requestType) {
+        //method injection
+        if (requestType.equals(SQUARE_STRING)) {
+            Injector injector = Guice.createInjector(new AppModule());
+            SquareRequestMethodInjection request = injector.getInstance(SquareRequestMethodInjection.class);
+            request.makeRequest();
+        }
+
+    }
+
     public static void main(String[] args) {
         System.out.println("App staring");
-        sendRequest(SQUARE_STRING);
+//        sendRequest(SQUARE_STRING);
+        sendRequest_2(SQUARE_STRING);
+        sendRequest_3(SQUARE_STRING);
     }
 }
